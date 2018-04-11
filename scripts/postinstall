@@ -1,3 +1,2 @@
 #!/bin/bash
-/usr/local/macnamer/namer
 launchctl load /Library/LaunchDaemons/ch.srgssr.macnamer.plist

@@ -120,8 +120,7 @@ else:
         # set the local hostname
         localname = name.replace(' ', '-')
         theprocess = "scutil --get LocalHostName"
-        oldname = subprocess.Popen(theprocess,shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE).communicate()[0]
-
+        oldname = subprocess.Popen(theprocess,shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE).communicate()[0].strip()
         if localname != oldname:
             theprocess = "scutil --set LocalHostName" + " " +localname
             p = subprocess.Popen(theprocess,shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE).communicate()[0]
@@ -131,7 +130,7 @@ else:
         #set the bonjour name
         desiredname = name
         theprocess = "scutil --get ComputerName"
-        oldname = subprocess.Popen(theprocess,shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE).communicate()[0]
+        oldname = subprocess.Popen(theprocess,shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE).communicate()[0].strip()
         if oldname != desiredname:
             theprocess = "scutil --set ComputerName" + " \"" +desiredname + "\""
             p = subprocess.Popen(theprocess,shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE).communicate()[0]
